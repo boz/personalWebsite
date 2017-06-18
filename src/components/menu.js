@@ -20,7 +20,7 @@ class Menu extends Component {
   renderPageOptions(elem) {
     
     return(
-      <Link key={elem} activeClass="active" to={elem} spy={true} smooth={true} offset={this.props.offsetVal} duration={500} onSetActive={this.handleSetActive} handleClick={this.handleClick}>
+      <Link key={elem} activeClass="active" to={elem} spy={true} smooth={true} offset={this.props.offsetVal} duration={500} onSetActive={this.handleSetActive} >
 
         <button className="menuButton" onClick={e => {this.handleClick(e);}} type="button" value={elem}> {elem} </button>
       </Link>
@@ -33,13 +33,11 @@ class Menu extends Component {
   
   render() {
     return (
-      <div  className="menu" style={this.props.menuStyle} >
-
+      <div  className={this.props.isTop ? "menuStart" : "menuTop"}  >
 
         {this.props.pageSections.map(elem => {
           return this.renderPageOptions(elem);
         })}
-        
         
       </div>
     );

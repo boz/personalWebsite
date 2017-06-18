@@ -18,15 +18,25 @@ class Header extends Component {
   render() {
     return (
       <div className={this.props.name} >
-        <div className="dark"> </div>
+
         <div className="headerInnerDiv">
+
           <div className="imgDiv">
             <img className="yourImg" src={this.props.yourImg} alt={this.props.name} />
           </div>
-          <div className="headerBuffer">
+
+          <div className="headerBuffer"></div>
+
+          <div className="nameDiv">
+            <div className="yourName"> {this.props.yourName} </div>
+          </div>
+          
+          <div className="oneLinerDiv">
+            {this.props.oneLiner} 
           </div>
           
         </div>
+        
       </div>
     );
   }

@@ -1,94 +1,118 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: helvetica;
-  color:#212b31;
-
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
 }
-
-.dark {
-   /* background-color: #36454f;*/
-    height: 170px;
+.imgDiv {
+    height: 225px;
 }
-.mainMenu {
-    margin-bottom: 10px;
-
-}
-.innerMainMenu {
-    /*position: fixed;*/
-    width: 100%;
-    overflow: hidden; 
-    display: block;
-
-}
-.innerMainMenu {
-    top:0;
-    position: fixed;
-    width: 100%;
-    overflow: hidden; 
-    display: block;
-    background: white;
-
-}
-
-.Overview {
-
-}
-
 .yourImg {
+    margin-top: 25px;
     border-radius: 50%;
     height: 200px;
     width: 200px;
     position: absolute;
-    left: 50%;
-    z-index: 2;
-    margin: -130px;
+    left: 40%;
 }
 
-.headerBuffer {
-    height: 70px;
-
-}
-
-.linkImg {
-    margin: 20px;
-}
-div {
-    white-space:pre;
-}
-
-.nameDiv {
-    font-family: 'Overpass', sans-serif;
-    font-size: 25px;
+.yourName {
     text-align: center;
-    color: black;
-    font-weight: 300i;
-}
-
-.nameDiv h1 {
-    margin-top: 5px;
-    margin-bottom: 3px;
+    font-size: 60px;
+    font-weight: lighter;
 }
 
 .oneLinerDiv {
+    font-size: 18px;
+    font-weight: lighter;
+    font-style: oblique;
     text-align: center;
-    /*border-top: double 3px black;
-    border-bottom: double 3px black;*/
-    margin-left: 10px;
-    margin-right: 10px;
-    font-style: italic;
+    margin-bottom: 25px;
+
+}
+
+.menuStart {
+    background-color: #d0dbe2;
+    text-align: center;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.menuTop {
+    background-color: #d0dbe2;
+    text-align: center;
+    height: 60px;
+    top: 0;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.menuButton {
+    background-color: #d0dbe2;
+    margin-top: 0px;
+    margin-left: 4%;
+    margin-right: 4%;
+    border: none;
+    margin-top: 20px;   
+
+}
+
+.textSection{
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+.textHeader{
+    font-size: 35px;
+    font-weight: lighter;
+
+}
+.first{
+    font-size: 20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.ImagesSection {
+
+}
+.Stack .textSecond {
+    margin: 5px;
+    font-weight: bold;
+    margin: 15px;
+    display: inline-block;
+    
+}
+
+.Stack li {
+    display: inline-block;
+    font-weight: normal;
+    margin: 5px;
+}
+
+ul {
+  list-style-type: none;
 }
 .linkMenu {
     display: block;
+    width: 100%;
+    padding: 0px;
     margin: 0px;
-
+    text-align: center;
+    background-color: #d0dbe2;
 }
 .linkDiv {
     display: inline-block;
     text-align: center;
     margin: 0px;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color:  #d0dbe2;
+    margin-left: 4%;
+    margin-right: 4%;
+
 }
 .innerDiv {
     display: block;
@@ -122,160 +146,4 @@ div {
     margin:0px;
     font-size: 12px;
     
-}
-
-.lowMenu {
-    
-    background-color: #36454f;
-    text-align: center;
-    height: 50px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    overflow: hidden; 
-
-}
-
-.menu {
-    
-    background-color: #36454f;
-    text-align: center;
-    height: 30px;
-    /*position: fixed;*/
-    top: 0;
-    width: 100%;
-    overflow: hidden; 
-
-}
-
-.menuButton{
-    margin-top: 0px;
-    margin-left: 1%;
-    margin-right: 1%;
-    border: none;
-    /*border-bottom: solid black 1px;*/
-    background-color: #36454f;
-    color: white;
-
-}
-.dictionarySection{
-    margin: 10px;
-}
-
-.dictHeader {
-  font-size: 30px;
-
-}
-
-.dictText {
-    display: block;
-
-}
-
-.dictKey {
-    display: inline-block;
-    margin: 5px;
-    font-weight: bold;
-    font-size: 18px;
-
-}
-
-.dictVal {
-    display: inline-block;
-    margin: 5px;
-    font-size: 15px;
-    font-weight: lighter;
-
-}
-
-.listSection {
-    margin: 10px;
-}
-
-.listHeader {
-    display: inline-block;
-    margin: 5px;
-}
-
-.listText {
-    
-}
-
-.listItem {
-    display: inline-block;
-    margin: 5px;
-    font-style: oblique;
-
-}
-.textSection{
-    margin: 10px;
-}
-.textHeader {
-    font-size: 30px;
-    margin-bottom:0px;
-
-}
-
-.textDict{
-    font-weight: bold;
-    font-size: 15px;
-    margin: 5px;
-    margin-top: 0px;
-}
-
-.textList {
-    font-weight: lighter;
-    font-size: 15px;
-    margin: 5px;
-    margin-bottom:0px;
-}
-.first {
-    margin: 5px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.second {
-    font-style: oblique;
-    font-weight: lighter;
-    font-size: 15px;
-    margin: 5px;
-}
-
-.third {
-    margin: 5px;
-    font-weight: bold;
-    font-style: oblique;
-}
-
-.none {
-    margin-left: 15px;
-    padding: 12px;
-}
-
-li {
-    list-style-type: none;
-}
-.Projects ul {
-    height :40px;
-}
-.Projects .none {
-    padding: 5px;
-}
-.Projects .first {
-    margin-top:10px;
-}
-
-.Stack .textSecond {
-    margin: 5px;
-    font-weight: bold;
-    margin: 15px;
-    display: inline-block;
-    
-}
-
-.Stack li {
-    display: inline-block;
-    font-weight: normal;
-    margin: 5px;
 }

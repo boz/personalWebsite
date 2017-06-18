@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import Images from './images';
+import LinkImages from './linkImages';
 class TextSection extends Component {
   constructor(){
     super();
@@ -13,14 +14,42 @@ class TextSection extends Component {
       
       const indKey = Object.keys(miniDict)[0];
       const indVal = miniDict[indKey];
+      
     
-      if(indKey ==="first" || indKey==="second" || indKey==="third" || indKey==="none"){
+      if(indKey ==="first" || indKey==="none"){
 
         return ( 
+          
           <div key={indVal} className={indKey}>{indVal} </div> 
+         
         );
 
-      } else {
+      } 
+      else if (indKey ==="img"){
+
+        let name=indVal.name;
+        let byLine=indVal.byLine;
+        let link=indVal.link;
+        let img=indVal.img;
+    
+        return(
+
+          <Images key={byLine} name={name} byLine={byLine} link={link} img={img} />
+        );
+      } 
+      else if (indKey==="linkImg"){
+        let name=indVal.name;
+        let byLine=indVal.byLine;
+        let link=indVal.link;
+        let img=indVal.img;
+       
+        return(
+
+          <LinkImages key={byLine} name={name} byLine={byLine} link={link} img={img} />
+        );
+      }
+
+      else {
       
         const li = miniDict[indKey].map(item => {
           
@@ -43,7 +72,7 @@ class TextSection extends Component {
     return (
       <div className="textSection">
         <div className={this.props.name} >
-          <h1 className="textHeader"> {this.props.name} </h1>
+          <div className="textHeader"> {this.props.name} </div>
           <div className="textText">
 
             {this.props.stateName.map(elem => {
