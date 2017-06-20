@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
-    "react-onscroll": "^1.0.4"
+    "react-onscroll": "^1.0.4",
+    "react-timeout": "^1.0.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

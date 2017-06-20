@@ -20,7 +20,7 @@ class Menu extends Component {
   renderPageOptions(elem) {
     
     return(
-      <Link key={elem} activeClass="active" to={elem} spy={true} smooth={true} offset={this.props.offsetVal} duration={500} onSetActive={this.handleSetActive} >
+      <Link key={elem} activeClass="active" to={elem} spy={true} smooth={true} offset={this.props.offSetVal} duration={500} onSetActive={this.handleSetActive} >
 
         <button className="menuButton" onClick={e => {this.handleClick(e);}} type="button" value={elem}> {elem} </button>
       </Link>

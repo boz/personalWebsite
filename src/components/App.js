@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import ScrollEvent from 'react-onscroll';
+import ReactTimeout from "react-timeout";
 
 import Header from './header';
 import Menu from './menu';
 import LinkMenu from './linkMenu';
 import DictionarySection from './dictionarySection';
 import TextSection from './textSection';
+import List from './list';
 
 import yourImg from '../lauren_profile.jpg';
 import calendarGlyph from '../calendar.png';
@@ -26,6 +28,7 @@ class App extends Component {
     super();
     this.handleClick= this.handleClick.bind(this);
     this.handleScrollCallback = this.handleScrollCallback.bind(this);
+    this.reSetOffSet = this.reSetOffSet.bind(this);
 
     this.state = {
       yourName: "Lauren Gordon-Fahn",
@@ -41,21 +44,21 @@ class App extends Component {
         [
           {"Traits of Math Mind":  
             [
-              "Logical Thought", "Organization of large bodies of information", "A love for Algorithmic thought", "The importance of examiing a problem near and far"
+              "A love for Logical Thought and problem solving", "Organization of large bodies of information", "A love for Algorithmic thought", "The importance of examiing a problem near and far"
             ]
           }
         ],
         [
           {"Traits of an Acupuncture's Thinking" : 
             [
-              "Listening", "Asking Constructive, timely, questions", "Organizing stratigic long term plans for treatment", "Explaining information that is not native to someone", "Merging and explaining two different perspecitives on treatment", "Problem solving with in the confines of patients lives"
+              "Listening", "Dedicated to team work", "Organizing stratigic long term plans for treatment", "Explaining information that is not native to someone"
             ]
           }
         ],
         [
           {"Traits of an Bootcamp Graduate":  
             [
-              "Fast learner", "Deadicated to learning and exploring technology", "Finding Creative ways to integrate past life skills to make exciting projects", "Being humble and googling my heart out"
+              "Fast dedicated learner", "Being humble and googling my heart out"
             ]
           }
         ]
@@ -80,8 +83,7 @@ class App extends Component {
       ],
 
       stack:[
-        [
-          {"Languages":["Python","Ruby","JavaScript(ES6, Ajax, JSON)", "HTML", "CSS", "SQL"]},
+        [ {"Languages":["Python","Ruby","JavaScript(ES6, Ajax, JSON)", "HTML", "CSS", "SQL"]},
           {"Operating Systems":["Mac OS X", "Linux"]},
           {"Frameworks/Libraries": ["Flask", "React", "jQuery", "Bootstrap"]},
           {"Database/Tools": ["PostgreSQL", "Git", "Github", "Command Line"]}
@@ -93,12 +95,14 @@ class App extends Component {
           {"img": {
             "name":"Daily", "byline":"dailyimg", "link": "", "img": githubGlyph}
           },
-          {"linkImg": {
-            "name":"GitHub", "byline":"githublink", "link": "https://github.com/laurengordonfahn/daily", "img": githubGlyph}
-          },
-          {"linkImg": {
-            "name":"Daily", "byline":"dailylink", "link": "https://dailytrackingcalendar.herokuapp.com", "img": calendarGlyph}
-          },
+          {"linkImg": [
+            {
+            "name":"GitHub", "byline":"githublink", "link": "https://github.com/laurengordonfahn/daily", "img": githubGlyph
+            },
+            {
+            "name":"Daily", "byline":"dailylink", "link": "https://dailytrackingcalendar.herokuapp.com", "img": calendarGlyph
+            }
+          ]},
           
           {"none": "Daily is an emotion tracking calendar. A personal calendar that enables users to summarize their emotions from a day in three adjectives and a representative color. With trending graphics and easy at-a-glance understanding of how they are feeling over time. Built with React and a Flask server."},
           {"Tech Stack": [" PostgreSQL, SQLAlchemy, Python, Flask, React, Javascript, Ajax, Unittest"]}
@@ -109,12 +113,13 @@ class App extends Component {
           {"img": {
             "name":"Notebook", "byline":"notebookimg", "link": "", "img": githubGlyph}
           },
-          {"linkImg": {
-            "name":"GitHub", "byline":"link", "githubnotebooklink": "https://github.com/laurengordonfahn/notebook", "img": githubGlyph}
-          },
-          {"linkImg": {
-            "name":"Notebook", "byline":"link", "notebooklink": "https://notebookonline.herokuapp.com", "img": notebookGlyph}
-          },
+          {"linkImg": [
+            {
+            "name":"GitHub", "byline":"link", "githubnotebooklink": "https://github.com/laurengordonfahn/notebook", "img": githubGlyph
+            },{
+            "name":"Notebook", "byline":"link", "notebooklink": "https://notebookonline.herokuapp.com", "img": notebookGlyph
+            }
+          ]},
           {"none": "Notebook is a one page dynamic notebook application. Built on a Flask RESTful API. Allows a user to create, edit, reorganize, and delete notes. Sign-In with Facebook."
           },
           {"Tech Stack": ["PostgreSQL, SQLAlchemy, Python, Flask, Javascript, jQuery, Ajax, OAuth2, Unittest"]}
@@ -133,35 +138,54 @@ class App extends Component {
 
       subSection: "Overview",
       isTop: false,
-      offsetVal: -250
+      y: window.scrollY ,
+      offSetVal: -150,
+      headerHeight: 260
+      
     
     };
   }
 
-  handleScrollCallback() {
+  reSetOffSet() {
+    this.props.setTimeout(
+      function() {
+        this.setState({ offSetVal: -80 });
+      }.bind(this), 8
+    );
+  }
 
-    if(window.scrollY > 250){
+  handleScrollCallback() {
+    const headerHeight = this.state.headerHeight
+    if(window.scrollY > 310){
+
+      this.reSetOffSet();
+    }
+    if(window.scrollY > headerHeight){
       
-      this.setState({isTop : true, offsetVal: 0});
+      this.setState({isTop : true});
     } 
-    else if (window.scrollY < 250) {
-      this.setState({isTop: false, offsetVal: 0});
+    else if (window.scrollY < headerHeight) {
+      
+      this.setState({isTop: false, offSetVal: -150});
     }
   }
 
   handleClick(to) {
-    
-    if (to ==="Overview") {
-     
-      this.setState({isTop: false, subSection: to});
+    const headerHeight = this.state.headerHeight
+    if (to ==="Projects") {
+      if (this.state.y < headerHeight){
+        this.setState({isTop: false, offSetVal: -150,subSection: to});
+      } else {
+      this.setState({isTop: false, offSetVal: -80,subSection: to});
+      }
     } 
     
     else if (to === "Top") {
-      this.setState({isTop: true, subSection: to});
+      this.setState({isTop: false, offSetVal: -80, subSection: to});
     }
-    else if (to !== "Overview"){
+    else if (to !== "Projects"){
 
-      this.setState({isTop: false, subSection: to});
+      this.setState({isTop: false, offSetVal: -80, subSection: to});
       
     }
     
@@ -176,7 +200,7 @@ class App extends Component {
           handleScrollCallback={this.handleScrollCallback} 
         />
 
-        <Element name="Top" className="element">  
+         <Element name="Top" className="element">
           <Header 
             name="header" 
             yourImg={this.state.yourImg} 
@@ -184,14 +208,16 @@ class App extends Component {
             oneLiner={this.state.oneLiner} 
           />
         </ Element>
-
-        <Menu 
+        
+         <Menu 
           name="Menu" 
           pageSections={this.state.pageSections} 
           isTop={this.state.isTop} 
           handleClick={this.handleClick} 
-          linkOptions={this.state.linkOptions} 
+          linkOptions={this.state.linkOptions}
+          offSetVal={this.state.offSetVal} 
         />
+        
 
         <Element name="Projects" className="element">
           <TextSection 
@@ -201,7 +227,7 @@ class App extends Component {
         </Element>
 
         <Element name="Stack" className="element">
-          <TextSection name="Stack" stateName={this.state.stack} />
+          <List name="Stack" stateName={this.state.stack} />
         </Element>
 
         <Element name="About Me" className="element">
@@ -218,4 +244,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ReactTimeout(App);

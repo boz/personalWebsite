@@ -5,7 +5,23 @@ class TextSection extends Component {
   constructor(){
     super();
     this.renderText = this.renderText.bind(this);
+    this.renderLinkImgDiv = this.renderLinkImgDiv.bind(this);
     
+  }
+
+  renderLinkImgDiv (obj) {
+  
+    console.log (obj);
+    let name=obj.name;
+    let byLine=obj.byLine;
+    let link=obj.link;
+    let img=obj.img;
+    
+    return(
+      <LinkImages key={link} name={name} link={link} img={img} />
+      
+    );
+        
   }
 
   renderText(elem) {
@@ -38,15 +54,16 @@ class TextSection extends Component {
         );
       } 
       else if (indKey==="linkImg"){
-        let name=indVal.name;
-        let byLine=indVal.byLine;
-        let link=indVal.link;
-        let img=indVal.img;
-       
+        
         return(
-
-          <LinkImages key={byLine} name={name} byLine={byLine} link={link} img={img} />
+          <div className="textLinkImgDiv">
+            {indVal.map(obj => {
+              return this.renderLinkImgDiv(obj);
+            })}
+          </div>
         );
+      
+        
       }
 
       else {
@@ -58,7 +75,7 @@ class TextSection extends Component {
 
         return (
           <div key={indVal} className="textDict">
-            <ul> {indKey} {li} </ul>
+            <ul> <span className="textListHeader"> {indKey} </span> {li} </ul>
           </div>
         );
       }
