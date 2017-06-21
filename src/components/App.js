@@ -34,8 +34,7 @@ class App extends Component {
       yourName: "Lauren Gordon-Fahn",
       oneLiner: "San Francisco Junior Developer, In Love With Javascript!",
       yourImg: yourImg,
-      pageSections: ["Top", "Projects", "Stack", "About Me", 
-      "Contacts"],
+      pageSections: ["Projects", "Stack", "About Me", "Contacts"],
 
       aboutMe:[
         [
@@ -44,7 +43,7 @@ class App extends Component {
         [
           {"Traits of Math Mind":  
             [
-              "A love for Logical Thought and problem solving", "Organization of large bodies of information", "A love for Algorithmic thought", "The importance of examiing a problem near and far"
+              "A love for Logical Thought and problem solving", "Organization of large bodies of information", "The importance of examiing a problem near and far"
             ]
           }
         ],
@@ -66,19 +65,19 @@ class App extends Component {
       
       linkOptions:[
         [{
-          "name":"LinkedIn", "byline":"link","link": "https://www.linkedin.com/in/lauren-gordon-fahn/", "img":linkedInGlyph
+          "name":"LinkedIn", "byline":"LinkedInlink","link": "https://www.linkedin.com/in/lauren-gordon-fahn/", "img":linkedInGlyph
         }], 
         [{
-          "name":"GitHub", "byline":"link", "link": "https://github.com/laurengordonfahn", "img": githubGlyph
+          "name":"GitHub", "byline":"GitHublink", "link": "https://github.com/laurengordonfahn", "img": githubGlyph
         }],
         [{ 
-          "name": "Facebook", "byline":"link","link": "https://www.facebook.com/search/top/?q=Lauren+Gordon+New&init=public", "img": facebookGlyph
+          "name": "Facebook", "byline":"facebookLink","link": "https://www.facebook.com/search/top/?q=Lauren+Gordon+New&init=public", "img": facebookGlyph
         }], 
         [{
-          "name": "Daily", "byline": "project", "link": "http://dailytrackingcalendar.herokuapp.com", "img": calendarGlyph
+          "name": "Daily", "byline": "DailyProjectLink", "link": "http://dailytrackingcalendar.herokuapp.com", "img": calendarGlyph
         }], 
         [{
-          "name": "Notebook", "byline": "project", "link": "http://notebookonline.herokuapp.com", "img": notebookGlyph
+          "name": "Notebook", "byline": "NotebookProjectLink", "link": "http://notebookonline.herokuapp.com", "img": notebookGlyph
         }]
       ],
 
@@ -93,7 +92,7 @@ class App extends Component {
       projects: [
         [ {"first": "Daily"},
           {"img": {
-            "name":"Daily", "byline":"dailyimg", "link": "", "img": githubGlyph}
+            "name":"Daily", "byline":"dailyimg", "link": "e", "img": githubGlyph}
           },
           {"linkImg": [
             {
@@ -111,13 +110,13 @@ class App extends Component {
         [
           {"first": "Notebook"},
           {"img": {
-            "name":"Notebook", "byline":"notebookimg", "link": "", "img": githubGlyph}
+            "name":"Notebook", "byline":"notebookimg1", "link": "i", "img": githubGlyph}
           },
           {"linkImg": [
             {
-            "name":"GitHub", "byline":"link", "githubnotebooklink": "https://github.com/laurengordonfahn/notebook", "img": githubGlyph
+            "name":"GitHub", "byline":"GitHubLink", "link": "https://github.com/laurengordonfahn/notebook", "img": githubGlyph
             },{
-            "name":"Notebook", "byline":"link", "notebooklink": "https://notebookonline.herokuapp.com", "img": notebookGlyph
+            "name":"Notebook", "byline":"noteBookLink", "link": "https://notebookonline.herokuapp.com", "img": notebookGlyph
             }
           ]},
           {"none": "Notebook is a one page dynamic notebook application. Built on a Flask RESTful API. Allows a user to create, edit, reorganize, and delete notes. Sign-In with Facebook."
@@ -156,16 +155,25 @@ class App extends Component {
 
   handleScrollCallback() {
     const headerHeight = this.state.headerHeight
-    if(window.scrollY > 310){
-
+    if (window.scrollY > 310){
       this.reSetOffSet();
+      let sections = this.state.pageSections;
+      if (sections[0] != 'Top') {
+        sections.unshift('Top');
+        this.setState({pageSections : sections}); 
+      }
+      
+    } else {
+      let sections = this.state.pageSections.filter(val => val != 'Top');
+      this.setState({pageSections : sections}); 
     }
-    if(window.scrollY > headerHeight){
+
+    if (window.scrollY > headerHeight){
       
       this.setState({isTop : true});
     } 
     else if (window.scrollY < headerHeight) {
-      
+    
       this.setState({isTop: false, offSetVal: -150});
     }
   }

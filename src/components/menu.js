@@ -11,11 +11,9 @@ class Menu extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  
   handleClick(e){
     this.props.handleClick(e.target.value);
   }
-
 
   renderPageOptions(elem) {
     
@@ -24,12 +22,8 @@ class Menu extends Component {
 
         <button className="menuButton" onClick={e => {this.handleClick(e);}} type="button" value={elem}> {elem} </button>
       </Link>
-
     );
-
-
   }
-// className={this.props.isTop ? "lowMenu" : "highMenu"}
   
   render() {
     return (

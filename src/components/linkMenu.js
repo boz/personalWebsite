@@ -23,12 +23,9 @@ class LinkMenu extends Component {
               < br/>
               <span className="linkByline"> {byline} </span>
             </a>
-
-          
+     
         </li>
-        
       );
-
     }
 
   render() {
@@ -38,7 +35,6 @@ class LinkMenu extends Component {
         {this.props.linkOptions.map(elem => {
           return this.renderLinkOptions(elem);
         })}
-        
         
       </ul>
     );

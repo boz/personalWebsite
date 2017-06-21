@@ -10,13 +10,11 @@ class TextSection extends Component {
   }
 
   renderLinkImgDiv (obj) {
-  
-    console.log (obj);
     let name=obj.name;
     let byLine=obj.byLine;
     let link=obj.link;
     let img=obj.img;
-    
+
     return(
       <LinkImages key={link} name={name} link={link} img={img} />
       
@@ -33,7 +31,7 @@ class TextSection extends Component {
       
     
       if(indKey ==="first" || indKey==="none"){
-
+        
         return ( 
           
           <div key={indVal} className={indKey}>{indVal} </div> 
@@ -42,15 +40,15 @@ class TextSection extends Component {
 
       } 
       else if (indKey ==="img"){
-
+        
         let name=indVal.name;
-        let byLine=indVal.byLine;
+        let byline=indVal.byline;
         let link=indVal.link;
         let img=indVal.img;
     
         return(
 
-          <Images key={byLine} name={name} byLine={byLine} link={link} img={img} />
+          <Images key={byline} name={name} byline={byline} link={link} img={img} />
         );
       } 
       else if (indKey==="linkImg"){
