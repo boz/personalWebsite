@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Images from './images';
 import LinkImages from './linkImages';
+import Carousel from './carousel';
 class TextSection extends Component {
   constructor(){
     super();
     this.renderText = this.renderText.bind(this);
     this.renderLinkImgDiv = this.renderLinkImgDiv.bind(this);
-    
+    this.state = {
+      isCurrent: 0
+    };
   }
 
   renderLinkImgDiv (obj) {
@@ -40,15 +43,12 @@ class TextSection extends Component {
 
       } 
       else if (indKey ==="img"){
-        
-        let name=indVal.name;
-        let byline=indVal.byline;
-        let link=indVal.link;
-        let img=indVal.img;
+        let lenCarousel = indVal["img"].length;
+        let imgList = indVal["img"];
     
         return(
 
-          <Images key={byline} name={name} byline={byline} link={link} img={img} />
+          <Carousel key={elem[indKey]} name={this.props.name} isCurrent={this.state.isCurrent} imgList={imgList} lenCarousel={lenCarousel} />
         );
       } 
       else if (indKey==="linkImg"){
@@ -60,8 +60,6 @@ class TextSection extends Component {
             })}
           </div>
         );
-      
-        
       }
 
       else {

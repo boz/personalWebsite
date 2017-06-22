@@ -216,6 +216,58 @@ ul {
     text-align: center;
     margin:0px;
     font-size: 12px;
-    
 }
 
+.isSeen {
+    position: absolute;
+    height: 100%;
+    opacity: 1;
+    z-index: 2;
+    display: inline-block;
+    margin-left:25%;
+}
+
+
+.isNotSeen {
+    position: absolute;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    display: inline-block;
+    margin-left:25%;
+}
+
+.imgCarouselList {
+    position: relative;
+    height: 250px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    display: block;
+}
+
+.btnCarouselDiv {
+    display: inline-block;
+    background-color: pink;
+    padding: 3px;
+    height: 25px;
+    width: 100px;
+    margin-left: 25%;
+    margin-top: 50px;
+}
+
+.btnbackwardImg {
+    float: left;
+    position: relative;
+    font-size: 25px;
+    bottom: 2px; 
+    left: 20px;
+}
+
+.btnforwardImg {
+    float: right;
+    position: relative;
+    font-size: 25px;
+    bottom: 2px; 
+    right: 20px; 
+}

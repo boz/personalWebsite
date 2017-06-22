@@ -17,6 +17,12 @@ import newspaperGlyph from '../newspaper.png';
 import facebookGlyph from '../facebook.png';
 import githubGlyph from '../github.png';
 import linkedInGlyph from '../linkedin.png';
+import daily1 from '../daily1.png';
+import daily2 from '../daily2.png';
+import daily3 from '../daily3.png';
+import notebook1 from '../notebook1.png';
+import notebook2 from '../notebook2.png';
+
 
 
 var Link       = Scroll.Link;
@@ -92,7 +98,7 @@ class App extends Component {
       projects: [
         [ {"first": "Daily"},
           {"img": {
-            "name":"Daily", "byline":"dailyimg", "link": "e", "img": githubGlyph}
+            "name":"Daily", "byline":"dailyimg", "img": [daily1, daily2, daily3]}
           },
           {"linkImg": [
             {
@@ -110,7 +116,7 @@ class App extends Component {
         [
           {"first": "Notebook"},
           {"img": {
-            "name":"Notebook", "byline":"notebookimg1", "link": "i", "img": githubGlyph}
+            "name":"Notebook", "byline":"notebookimg1", "img": [notebook1, notebook2]}
           },
           {"linkImg": [
             {
